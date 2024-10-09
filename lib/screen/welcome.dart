@@ -14,6 +14,7 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     final ap = Provider.of<CustomAuthProvider>(context, listen: false);
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 5, 0, 61),
       body: Stack(
         children: [
           //
@@ -36,9 +37,9 @@ class Welcome extends StatelessWidget {
                     SizedBox(
                         width: MediaQuery.of(context).size.width * 0.7,
                         child: ElevatedButton(
-                            // style: ButtonStyle(
-                            //     backgroundColor: WidgetStatePropertyAll(
-                            //         Color.fromARGB(255, 219, 17, 2))),
+                            style: ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(
+                                    Color.fromARGB(255, 255, 255, 255))),
                             onPressed: () async {
                               ap.isSignedIn == true
                                   ? await ap.getDataFromSP().whenComplete(() =>
@@ -60,7 +61,10 @@ class Welcome extends StatelessWidget {
                         )),
                     Text(
                       'Next Newest',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.colors.white,
+                      ),
                     )
                   ],
                 ),

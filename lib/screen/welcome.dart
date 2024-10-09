@@ -14,7 +14,7 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     final ap = Provider.of<CustomAuthProvider>(context, listen: false);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 5, 0, 61),
+      backgroundColor: Color.fromARGB(255, 1, 14, 67),
       body: Stack(
         children: [
           //

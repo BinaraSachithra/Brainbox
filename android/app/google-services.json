@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "692422217843",
+    "project_id": "lakshapathi-70bb9",
+    "storage_bucket": "lakshapathi-70bb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692422217843:android:6fd9cdad3cd1713a5d9a06",
+        "android_client_info": {
+          "package_name": "com.example.lakshapathi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA64VoMcIMxcrwNTiK7-zw6pO_HZyOOqoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -198,7 +198,27 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Upload Payement Receipt',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
                     height: 10,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // verifyPhoneNumber(mobileController.text);
+                        // Navigator.pushNamed(context, '/login');
+                      },
+                      child: const Text("Choose File"),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -210,84 +230,43 @@ class _RegisterState extends State<Register> {
                       child: const Text("Sign Up"),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    child: Text(
-                      "OR",
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.transparent),
-                      onPressed: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                              height: 20,
-                              child: Image.asset('assets/Google.png')),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text("Register with Google"),
-                        ],
-                      ),
-                    ),
-                  ),
                   const SizedBox(
                     height: 10,
                   ),
-                  // SizedBox(
-                  //   width: MediaQuery.of(context).size.width,
-                  //   child: ElevatedButton(
-                  //     onPressed: () {},
-                  //     child: Row(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         Container(
-                  //             height: 20,
-                  //             child: const Icon(
-                  //               Icons.facebook_outlined,
-                  //               color: Colors.blue,
-                  //             )),
-                  //         const SizedBox(
-                  //           width: 10,
-                  //         ),
-                  //         const Text("Register with Facebook"),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
-                  // SizedBox(
-                  //   width: MediaQuery.of(context).size.width,
-                  //   child: ElevatedButton(
-                  //     onPressed: () {},
-                  //     child: Row(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         Container(
-                  //             height: 20,
-                  //             child: const Icon(Icons.email_outlined)),
-                  //         const SizedBox(
-                  //           width: 10,
-                  //         ),
-                  //         const Text("Register with Email"),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  const SizedBox(
-                    height: 6,
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 15.0, top: 8),
+                      child: RichText(
+                        text: TextSpan(
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 212, 212, 212),
+                              fontSize: 14),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: "Already have an account?  ",
+                              style: TextStyle(
+                                color: Colors.grey[600],
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Sign In',
+                              style: TextStyle(
+                                color: AppTheme.colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.pushNamed(context, "/login");
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                   Align(
                     alignment: Alignment.bottomCenter,

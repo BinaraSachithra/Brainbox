@@ -37,9 +37,6 @@ class _LoginState extends State<Login> {
                   Container(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: Image.asset('assets/logo.jpg')),
-                  SizedBox(
-                    height: 30,
-                  ),
                   Text(
                     'Welcome Back',
                     style: TextStyle(
@@ -59,7 +56,6 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 16,
                   ),
-
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -117,7 +113,6 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 10,
                   ),
-
                   TextField(
                     obscureText: hidePassword,
                     controller: passwordController,
@@ -183,46 +178,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
-                  ),
-
-                  // SizedBox(
-                  //   width: MediaQuery.of(context).size.width,
-                  //   child: ElevatedButton(
-                  //     onPressed: () {},
-                  //     child: Row(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         Container(
-                  //             height: 20, child: Icon(Icons.email_outlined)),
-                  //         SizedBox(
-                  //           width: 10,
-                  //         ),
-                  //         Text("Login with Email"),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-
-                  // IntlPhoneField(
-                  //   controller: mobileController,
-                  //   onCountryChanged: (Country) {
-                  //     countryCode = Country.code;
-                  //   },
-                  //   disableLengthCheck: true,
-                  //   decoration: InputDecoration(
-                  //     labelText: 'Phone Number',
-                  //     border: OutlineInputBorder(
-                  //       borderSide: BorderSide(),
-                  //     ),
-                  //   ),
-                  //   initialCountryCode: 'LK',
-                  //   onChanged: (phone) {
-                  //     print(phone.completeNumber);
-                  //   },
-                  // ),
-                  SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -230,7 +186,13 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/home');
                       },
-                      child: Text("Continue"),
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                            color: AppTheme.colors.primary,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -246,28 +208,63 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.w400),
                     ),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.transparent),
-                      onPressed: () {
-                        signInWithGoogle();
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                              height: 20,
-                              child: Image.asset('assets/Google.png')),
-                          SizedBox(
-                            width: 10,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .spaceEvenly, // Adjusts the spacing between the buttons
+                    children: [
+                      // Google Button
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width *
+                            0.4, // Adjust width for each button
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.transparent),
+                          onPressed: () {
+                            signInWithGoogle();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 20,
+                                child: Image.asset('assets/Google.png'),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("Google"),
+                            ],
                           ),
-                          Text("Login with Google"),
-                        ],
+                        ),
                       ),
-                    ),
+                      // GitHub Button
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width *
+                            0.4, // Adjust width for each button
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.transparent),
+                          onPressed: () {
+                            signInWithGoogle();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 20,
+                                child: Image.asset('assets/Github.png'),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("GitHub"),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 16,
@@ -323,7 +320,10 @@ class _LoginState extends State<Login> {
                     'Next Newest',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.white),
-                  )
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
                 ],
               ),
             ),

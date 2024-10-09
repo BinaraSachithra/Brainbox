@@ -19,6 +19,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   bool hidePassword = true;
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
   // String countryCode = '+94';
 
@@ -75,34 +76,91 @@ class _LoginState extends State<Login> {
                     controller: emailController,
                     decoration: InputDecoration(
                         labelText: 'Email',
-                        prefixIconColor: AppTheme.colors.primary,
+                        prefixIconColor: AppTheme.colors.white,
                         floatingLabelStyle: TextStyle(
-                          color: AppTheme.colors.primary,
+                          color: AppTheme.colors.white,
                         ),
                         prefixIcon: Icon(Icons.email),
                         labelStyle: TextStyle(
-                          color: AppTheme.colors.primary,
+                          color: AppTheme.colors.white,
                         ),
                         focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                          color: AppTheme.colors.primary,
+                          color: AppTheme.colors.white,
                         )),
                         errorStyle: TextStyle(
-                          color: AppTheme.colors.primary,
+                          color: AppTheme.colors.white,
                         ),
                         errorBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: AppTheme.colors.primary)),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: Color.fromARGB(137, 73, 73, 73)),
+                              color: Color.fromARGB(136, 245, 245, 245)),
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: AppTheme.colors.primary,
+                            color: AppTheme.colors.white,
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: AppTheme.colors.white,
+                            ),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10)))),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+
+                  TextField(
+                    obscureText: hidePassword,
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              hidePassword = !hidePassword;
+                            });
+                          },
+                          icon: hidePassword
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.visibility_off),
+                        ),
+                        labelText: 'Password',
+                        prefixIconColor: AppTheme.colors.white,
+                        floatingLabelStyle: TextStyle(
+                          color: AppTheme.colors.white,
+                        ),
+                        prefixIcon: Icon(Icons.key),
+                        labelStyle: TextStyle(
+                          color: AppTheme.colors.white,
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: AppTheme.colors.white,
+                        )),
+                        errorStyle: TextStyle(
+                          color: AppTheme.colors.white,
+                        ),
+                        errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: AppTheme.colors.primary)),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(136, 245, 245, 245)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppTheme.colors.white,
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
@@ -112,6 +170,20 @@ class _LoginState extends State<Login> {
                             ),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Forget Password',
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w200,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
 
                   // SizedBox(
@@ -156,7 +228,7 @@ class _LoginState extends State<Login> {
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
                       onPressed: () {
-                        // sendPhoneNumber();
+                        Navigator.pushNamed(context, '/home');
                       },
                       child: Text("Continue"),
                     ),
@@ -199,6 +271,44 @@ class _LoginState extends State<Login> {
                   ),
                   SizedBox(
                     height: 16,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 15.0, top: 8),
+                      child: RichText(
+                        text: TextSpan(
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 212, 212, 212),
+                              fontSize: 14),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: "Don't have an account ?  ",
+                              style: TextStyle(
+                                color: Colors.grey[600],
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Sign up',
+                              style: TextStyle(
+                                color: AppTheme.colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.pushNamed(context, "/register");
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
                   ),
                   Container(
                       alignment: Alignment.bottomCenter,

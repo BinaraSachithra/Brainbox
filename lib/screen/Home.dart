@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
               hoverColor: Colors.grey[100]!,
               activeColor: Colors.white,
               iconSize: 20,
-              tabBackgroundColor: Color.fromARGB(255, 72, 161, 79),
+              tabBackgroundColor: AppTheme.colors.primary,
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               backgroundColor: Colors.white,
               color: AppTheme.colors.primary,

@@ -13,15 +13,15 @@ class AppTextFormFieldTheme {
     floatingLabelStyle: TextStyle().copyWith(color: Colors.grey),
     border: OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(40),
-      borderSide: BorderSide(width: 1, color: AppTheme.colors.primary),
+      borderSide: BorderSide(width: 1, color: AppTheme.colors.white),
     ),
     enabledBorder: OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(40),
-      borderSide: BorderSide(width: 1, color: AppTheme.colors.primary),
+      borderSide: BorderSide(width: 1, color: AppTheme.colors.white),
     ),
     focusedBorder: OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(40),
-      borderSide: BorderSide(width: 2, color: AppTheme.colors.primary),
+      borderSide: BorderSide(width: 2, color: AppTheme.colors.white),
     ),
     errorBorder: OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(40),

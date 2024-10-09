@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:lakshapathi/components/MillionaireButton.dart';
-import 'package:lakshapathi/models/questionModel.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:lakshapathi/screen/Calender.dart';
+import 'package:lakshapathi/screen/Classes.dart';
+import 'package:lakshapathi/screen/HomePage.dart';
+import 'package:lakshapathi/screen/MyLearning.dart';
+import 'package:lakshapathi/screen/Paper.dart';
+import 'package:lakshapathi/screen/Profile.dart';
+import 'package:lakshapathi/screen/Theory.dart';
+import 'package:lakshapathi/utils/themes/theme.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,74 +19,74 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late YoutubePlayerController _controller;
-  final videoLink = 'https://youtu.be/NdUy4sNQYGo';
+  int currentTabIndex = 0;
 
-  bool isASelected = false;
-  bool isBSelected = false;
-  bool isCSelected = false;
-  bool isDSelected = false;
-  String selectedAnswer = "0";
-  int Qindex = 1;
-  bool isListVisible = false;
+  late List<Widget> pages;
+  late Widget currentPage;
+  late HomePage homePage;
+  late Classes classes;
+  late MyLearning myLearning;
+  late Calender calender;
+  late Profile profile;
 
   @override
   void initState() {
-    final videoID = YoutubePlayer.convertUrlToId(videoLink);
-    _controller = YoutubePlayerController(
-        initialVideoId: videoID!,
-        flags: YoutubePlayerFlags(
-          hideControls: true,
-          hideThumbnail: true,
-          mute: false,
-          autoPlay: true,
-          disableDragSeek: true,
-          loop: true,
-          isLive: false,
-          forceHD: false,
-          enableCaption: false,
-        ));
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
+    homePage = const HomePage();
+    classes = const Classes();
+    calender = const Calender();
+    profile = const Profile();
+    myLearning = const MyLearning();
+    pages = [homePage, classes, myLearning, calender, profile];
     super.initState();
-  }
-
-  @override
-  dispose() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          YoutubePlayer(
-            controller: _controller,
-            showVideoProgressIndicator: true,
-            progressIndicatorColor: Colors.blue,
-            bottomActions: [
-              ProgressBar(
-                isExpanded: true,
-                colors: ProgressBarColors(
-                    playedColor: Colors.blue,
-                    handleColor: Colors.blue,
-                    bufferedColor: Colors.grey[300]),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
+        bottomNavigationBar: Container(
+          color: Colors.white,
+          padding: EdgeInsets.all(12),
+          child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              activeColor: Colors.white,
+              iconSize: 20,
+              tabBackgroundColor: Color.fromARGB(255, 72, 161, 79),
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              backgroundColor: Colors.white,
+              color: AppTheme.colors.primary,
+              duration: Duration(milliseconds: 400),
+              onTabChange: (int index) {
+                setState(() {
+                  currentTabIndex = index;
+                });
+              },
+              tabs: const [
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                ),
+                GButton(
+                  icon: Icons.list,
+                  text: 'Orders',
+                ),
+                GButton(
+                  icon: Icons.add,
+                  text: 'Post',
+                ),
+                GButton(
+                  icon: Icons.chat_outlined,
+                  text: 'Chat',
+                ),
+                GButton(
+                  icon: Icons.settings,
+                  text: 'Settings',
+                ),
+              ]),
+        ),
+        body: AnimatedSwitcher(
+          duration: Duration(milliseconds: 400),
+          child: pages[currentTabIndex],
+        ));
   }
 }

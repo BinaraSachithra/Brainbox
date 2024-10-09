@@ -14,7 +14,7 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     final ap = Provider.of<CustomAuthProvider>(context, listen: false);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 5, 0, 61),
+      backgroundColor: Color.fromARGB(255, 8, 2, 73),
       body: Stack(
         children: [
           //
@@ -32,7 +32,7 @@ class Welcome extends StatelessWidget {
                           child: Image.asset('assets/logo.jpg')),
                     ),
                     SizedBox(
-                      height: 12,
+                      height: 10,
                     ),
                     SizedBox(
                         width: MediaQuery.of(context).size.width * 0.7,
@@ -48,8 +48,15 @@ class Welcome extends StatelessWidget {
                                   : Navigator.pushReplacementNamed(
                                       context, '/login');
                             },
-                            child: Text("GET STARTED"))),
-                    SizedBox(height: 30),
+                            child: Text(
+                              "GET STARTED",
+                              style: TextStyle(
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.w900,
+                                color: AppTheme.colors.black,
+                              ),
+                            ))),
+                    SizedBox(height: 40),
                     Container(
                         alignment: Alignment.bottomCenter,
                         child: Padding(
@@ -65,7 +72,8 @@ class Welcome extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: AppTheme.colors.white,
                       ),
-                    )
+                    ),
+                    SizedBox(height: 40),
                   ],
                 ),
               ),
